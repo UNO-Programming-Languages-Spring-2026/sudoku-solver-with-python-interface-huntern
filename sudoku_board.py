@@ -28,6 +28,16 @@ class Sudoku:
     def from_str(cls, s: str) -> "Sudoku":
         sudoku = {}
         # YOUR CODE HERE
+        lines = [line.strip() for line in s.splitlines() if line.strip() != ""]
+        row = 1
+        for line in lines:
+            tokens = line.split()
+            col = 1
+            for token in tokens:
+                if token != "-":
+                    sudoku[(row, col)] = int(token)
+                col += 1
+            row += 1
         return cls(sudoku)
 
     @classmethod
